@@ -1,6 +1,5 @@
 var Knwl = require('../knwl');
 var knwl = new Knwl();
-knwl.register('ratios', require('../experimental_plugins/ratios'));
 
 // Test Ratio Detection
 describe("ratio detection", function () {

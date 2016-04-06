@@ -160,14 +160,17 @@ function Knwl(language) {
 	var knwl = this;
 	
 	// load default plugins
-    this.register('dates', require('./default_plugins/dates'));
-    this.register('times', require('./default_plugins/times'));
+    this.register('dates', require('./plugins/dates'));
+    this.register('emails', require('./plugins/emails'));
+
+    this.register('links', require('./plugins/links'));
+    this.register('money', require('./plugins/money'));
+    this.register('phones', require('./plugins/phones'));
     
-    this.register('emails', require('./default_plugins/emails'));
-    this.register('links', require('./default_plugins/links'));
-    this.register('phones', require('./default_plugins/phones'));
-    
-    this.register('places', require('./default_plugins/places'));
+    this.register('places', require('./plugins/places'));
+    this.register('ratios', require('./plugins/ratios'));
+    this.register('times', require('./plugins/times'));
+    // this.register('units', require('./plugins/units'));
 };
 
 module.exports = Knwl;

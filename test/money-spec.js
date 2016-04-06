@@ -1,6 +1,5 @@
 var Knwl = require('../knwl');
 var knwl = new Knwl();
-knwl.register('money', require('../experimental_plugins/money'));
 
 // Test money detection
 describe("money detection", function () {
