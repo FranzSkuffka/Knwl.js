@@ -11,7 +11,10 @@ function Ratios(knwlInstance) {
         },
 
         {                                                         // fractions with colon or slash: 9:30; 12/123
-            percentile: function(value) { return eval(value.replace(':','/'))* 100},
+            percentile: function(value) {
+                parts = value.split(':');
+                return parts[0] / parts[1] * 100;
+                },
             regEx: '[0-9]*[\:|\/][0-9]*'
         }
 
