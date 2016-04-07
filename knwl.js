@@ -171,6 +171,7 @@ function Knwl(language) {
     this.register('ratios', require('./plugins/ratios'));
     this.register('times', require('./plugins/times'));
     // this.register('units', require('./plugins/units'));
+    this.register('websites', require('./plugins/websites'));
 };
 
 module.exports = Knwl;
