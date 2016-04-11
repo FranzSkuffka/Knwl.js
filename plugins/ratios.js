@@ -6,13 +6,15 @@ function Ratios(knwlInstance) {
     var types = [
 
         {                                                         // regular percent: 12938,1231%
-            percentile: function(value) { return +value.substring(0, value.length - 1)},
+            percentile: function(value) {
+                return +value.substring(0, value.length - 1)
+                },
             regEx: '[0-9]*[\.|,]?[0-9]*\%'
         },
 
         {                                                         // fractions with colon or slash: 9:30; 12/123
             percentile: function(value) {
-                parts = value.split(':');
+                parts = value.split(/[\/\:]/);
                 return parts[0] / parts[1] * 100;
                 },
             regEx: '[0-9]*[\:|\/][0-9]*'
