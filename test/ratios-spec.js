@@ -16,7 +16,6 @@ describe("ratio detection", function () {
     it("should detect a fraction denoted with a colon", function () {
         knwl.init("Le professeur disait que on mange 3:4 de le fromage.");
         var output = knwl.get("ratios");
-        console.log(output);
         expect(output[0].value).toBe("3:4");
         expect(output[0].percentileValue).toBe(75);
     });
