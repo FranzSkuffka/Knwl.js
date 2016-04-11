@@ -33,6 +33,11 @@ describe("email", function() {
             var output = knwl.get("emails");
             expect(output[0].address).toBe(ve);
         });
+        it("should detect the valid email of " + ve + "in angled brackets", function() {
+            knwl.init("You can reach me on <" + ve + ">");
+            var output = knwl.get("emails");
+            expect(output[0].address).toBe(ve);
+        });
     };
 
     for (var i = ValidEmails.length - 1; i >= 0; i--) {
