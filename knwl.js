@@ -79,6 +79,9 @@ function Knwl(language) {
 		linkWords: [],
 		linkWordsCasesensitive: []
 	};
+	this.getRaw = function() { //retrieve words from database
+            return knwl.raw;
+	};
 	this.words.get = function(typeStr) { //retrieve words from database
         if (knwl.words[typeStr] !== undefined) {
             return knwl.words[typeStr].concat([]);
@@ -128,6 +131,7 @@ function Knwl(language) {
 		knwl.words.linkWordsCasesensitive = linkWordsCaseSensitive;
 		knwl.words.linkWords = linkWords;
 		knwl.words.words = words;
+		knwl.raw = str;
 		return knwl.words;
 	};
 	this.get = function(parser) {

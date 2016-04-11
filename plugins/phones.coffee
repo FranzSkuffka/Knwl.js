@@ -23,17 +23,33 @@ module.exports = InternationalPhones = (knwlInstance) ->
         return validatedNumbers
 
     @calls = ->
-        words = knwlInstance.words.get('linkWords')
+        raw = knwlInstance.getRaw()
 
-        gramStrings = []
+        lines = raw.split('\n')
 
-        # extract numbers from 4grams
-        for index in [0 .. words.length - 4]
-            gram = words.slice index, index + 4
-            # extract numbers with leading plus only
-            gramString = gram.join().replace(/[^\/\d+]/g,'')
-            if gramString != gramStrings[gramStrings.length - 1] && gramString.length > 5 then gramStrings.push gramString
+        # array of words for each line
+        wordsByLine = []
+        for line in lines
+            wordsByLine.push line.split(' ')
 
-        @validateAndFormat gramStrings
+        # validateAndFormat grams for each line
+        gramStringsByLine = []
+        for lineWords in wordsByLine
+            gramStrings = []
+
+            # extract numbers from 4grams
+            for index in [0 .. lineWords.length - 4]
+                gram = lineWords.slice index, index + 4
+                # extract numbers with leading plus only
+                gramString = gram.join().replace(/[^\/\d+]/g,'')
+                if gramString != gramStrings[gramStrings.length - 1] && gramString.length > 5
+                    gramStrings.push gramString
+            gramStringsByLine.push gramStrings
+
+
+        numbers = []
+        for gramStrings in gramStringsByLine
+            numbers = numbers.concat @validateAndFormat gramStrings
+        numbers
 
     return
